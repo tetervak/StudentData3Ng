@@ -1,0 +1,54 @@
+<section>
+  <h1>{{title}}</h1>
+  <form [formGroup]="form" (ngSubmit)="send(form.value)">
+    <h2>Student Name:</h2>
+    <p>
+      <label for="first" class="input-label">First Name:</label><br/>
+      <input id="first" type="text" formControlName="firstName" name="firstName">
+      <span *ngIf="form.get('firstName').hasError('required')"
+            class="validation-message">
+        <br/>First name is required
+      </span>
+    </p>
+    <p>
+      <label for="last" class="input-label">Last Name:</label><br/>
+      <input id="last" type="text" formControlName="lastName" name="lastName">
+      <span *ngIf="form.get('lastName').hasError('required')"
+            class="validation-message">
+        <br/>Last name is required
+      </span>
+    </p>
+    <h2>Student Info:</h2>
+    <p>
+      <label for="prog" class="input-label">Program: </label><br/>
+      <select id="prog" formControlName="programId" name="programId">
+        <option *ngFor="let p of programNames; let i=index;" [value]='i'>{{p}}</option>
+      </select>
+      <span *ngIf="form.get('programId').hasError('programId')"
+            class="validation-message">
+        <br/>Select the program
+      </span>
+    </p>
+    <p>
+      <label class="input-label">Year:</label><br/>
+      <label><input type="radio" value="1" class="radio-label"
+                    formControlName="programYear" name="programYear">First</label>
+      <label><input name="programYear" type="radio" value="2" class="radio-label"
+                    formControlName="programYear">Second</label>
+      <span *ngIf="form.get('programYear').hasError('programYear')"
+            class="validation-message">
+        <br/>Select the year
+      </span>
+    </p>
+    <p>
+      <label class="input-label">Options:</label><br/>
+      <label><input type="checkbox" value="yes" class="checkbox-label"
+                    formControlName="programCoop" name="programCoop">Co-op</label><br/>
+      <label><input type="checkbox" value="yes" class="checkbox-label"
+                    formControlName="programInternship" name="programInternship">Internship</label>
+    </p>
+    <p>
+      <button type="submit" [disabled]="!form.valid">Send</button>
+    </p>
+  </form>
+</section>

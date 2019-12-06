@@ -1,0 +1,36 @@
+<section>
+  <h1>{{title}}</h1>
+  <h2>Student Name:</h2>
+  <p>
+    <label class="output-label">First Name:</label>
+    <span class="output-value">{{student.firstName}}</span>
+  </p>
+  <p>
+    <label class="output-label">Last Name:</label>
+    <span class="output-value">{{student.lastName}}</span>
+  </p>
+  <h2>Student Info:</h2>
+  <p>
+    <label class="output-label">Program:</label>
+    <span class="output-value">
+      {{(student.programId>0)?programNames[student.programId]:""}}
+    </span>
+  </p>
+  <p>
+    <label class="output-label">Year:</label>
+    <span class="output-value">
+      {{(student.programYear>0)?student.programYear:""}}
+    </span>
+  </p>
+  <p>
+    <label class="output-label">Co-op:</label>
+    <span class="output-value">{{student.programCoop?"yes":"no"}}</span>
+  </p>
+  <p>
+    <label class="output-label">Internship:</label>
+    <span class="output-value">{{student.programInternship?"yes":"no"}}</span>
+  </p>
+  <p>
+    <a routerLink="input">Back to Input</a>
+  </p>
+</section>
